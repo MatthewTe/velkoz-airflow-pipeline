@@ -8,8 +8,7 @@ FROM puckel/docker-airflow
 
 # Installing git and necessary system applications:
 USER root
-RUN apt update
-RUN apt install -y git
+RUN apt update && apt install -y git
 USER airflow
 
 # Configuring the python environment via the requirements.txt:
