@@ -36,6 +36,6 @@ urllib3==1.25.10
 webencodings==0.5.1
 wincertstore==0.2
 yfinance==0.1.54
--e git+https://github.com/MatthewTe/velkoz_data_api.git@0c352a5e9648e91a29355895db7d8a2e9e7f5e24#egg=velkoz_data_api
--e git+https://github.com/MatthewTe/velkoz_web_data_extraction_library.git@c2fc4ad61ae1d862f940eb1925197daffde26f54#egg=velkoz_web_packages
+-e git+https://github.com/MatthewTe/velkoz_data_api.git#egg=velkoz_data_api
+-e git+https://github.com/MatthewTe/velkoz_web_data_extraction_library.git#egg=velkoz_web_packages
 
