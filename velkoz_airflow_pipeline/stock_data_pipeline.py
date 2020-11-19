@@ -36,4 +36,4 @@ stock_pipeline.schedule_stock_price_data_ingestion(price_csv_file_path)
 
 # Exposing Stock Price DAG and PythonOperartor to Global Execution Context:
 stock_price_DAG = stock_pipeline.stock_price_dag
-# stock_price_DAG_operator = stock_pipeline.write_price_data_operator
+stock_price_DAG_operator = stock_pipeline.write_price_data_operator
