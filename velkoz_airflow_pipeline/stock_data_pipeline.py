@@ -33,6 +33,6 @@ stock_pipeline = VelkozStockPipeline(database_uri, "2020-11-18")
 
 
 # Exposing Stock Price DAG and PythonOperartor to Global Execution Context:
-stock_price_DAG = stock_pipeline.stock_price_dag
 stock_price_DAG_operator = stock_pipeline.schedule_stock_price_data_ingestion(
-    price_csv_file_path)
+    price_csv_file_path) # DAG Object
+stock_price_DAG = stock_pipeline.stock_price_dag # PythonOperator Object
