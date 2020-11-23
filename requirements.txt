@@ -13,6 +13,7 @@ lxml==4.5.2
 MarkupSafe==1.1.1
 multitasking==0.0.9
 numpy==1.19.1
+psycopg2-binary==2.8.6
 packaging==20.4
 pandas==1.1.0
 Pygments==2.6.1
@@ -38,4 +39,3 @@ wincertstore==0.2
 yfinance==0.1.54
 -e git+https://github.com/MatthewTe/velkoz_data_api.git#egg=velkoz_data_api
 -e git+https://github.com/MatthewTe/velkoz_web_data_extraction_library.git#egg=velkoz_web_packages
-
