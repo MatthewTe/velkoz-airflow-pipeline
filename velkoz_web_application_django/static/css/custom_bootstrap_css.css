@@ -1,0 +1,29 @@
+/* General Styling For All Pages */
+body {
+  background-color: #D3D3D3;
+}
+
+/* Custom Styling for Bootstrap navbar */
+.navbar-default {
+  background-color: #9A53CC;
+  border-color: #000000;
+}
+
+.navbar-default .navbar-brand {
+  color: #FFFF;
+  font-family: Ubuntu-Regular, sans-serif;
+  font-size: 20px;
+}
+
+.navbar-default .nav-link {
+  color: #FFFF;
+  font-family: Ubuntu-Regular, sans-serif;
+  font-size: 20px;
+}
+
+.navbar-default .navbar-text {
+  color: #FFFF;
+  font-family: Ubuntu-Regular, sans-serif;
+  font-size: 20px;
+
+}

@@ -1,0 +1,60 @@
+{% extends "core_layout.html" %}
+{% load admin_urls %}
+{% load static %}
+
+{% block head_links %}
+<link rel="stylesheet" href="{% static 'dashboard_core/css/custom_main_index_page_css.css' %}">
+{% endblock head_links %}
+
+{% block body %}
+
+<div class="row row-cols-1 row-cols-md-3">
+
+  {# Iterating over the list of database instances from the local django database generating front-end cards #}
+  {% for database_instance in external_databases %}
+  <div class="col mb-4 d-flex">
+        <div class="card">
+          <h5 class="card-header"></h5>
+          <a href="{% url database_instance.db_name %}">
+            <img class="card-img-top" src="{% static 'dashboard_core/images/database_icon.png' %}" alt="...">
+          </a>
+          <div class="card-body">
+            <h4 class="card-title create_db_card_label"><b>{{database_instance.db_name}}</b></h4>
+            <span class="card-text">Database Status:</span>
+
+            {% if database_instance.get_db_status == True %}
+              <span style="color:green">Online</span>
+            {% elif database_instance.get_db_status == False %}
+              <span style="color:red">Offline</span>
+            {% endif %}
+
+          <p>
+            <span>Database Size:</span>
+
+            {% if database_instance.get_db_status == True %}
+              <span>{{database_instance.get_db_size|filesizeformat}}</span>
+            {% elif database_instance.get_db_status == False %}
+              <span style="color:red">NaN</span>
+            {% endif %}
+          </p>
+          </div>
+        </div>
+  </div>
+  {% endfor %}
+
+
+  <div class="col mb-4 d-flex">
+        <div class="card">
+          <h5 class="card-header"></h5>
+          <a href="{% url 'admin:index' %}">
+          <img class="card-img-top" src="{% static 'dashboard_core/images/plus_icon.png' %}" alt="...">
+          </a>
+          <div class="card-body">
+            <h4 class="card-title create_db_card_label"><b>Add Database</b></h4>
+          </div>
+        </div>
+  </div>
+
+</div>
+
+{% endblock body %}

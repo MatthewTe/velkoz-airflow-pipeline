@@ -1,0 +1,97 @@
+{% extends "core_layout.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %} Login {% endblock title %}
+
+{% block head_links %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="{% static 'registration/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'registration/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'registration/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'registration/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'registration/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'registration/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'registration/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'registration/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'registration/vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'registration/css/util.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'registration/css/main.css' %}">
+<!--===============================================================================================-->
+{% endblock head_links %}
+
+{% block body %}
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100 p-t-50 p-b-90">
+
+
+
+      <form role="form" class="login100-form validate-form flex-sb flex-w" id="login-form" method="post">
+        <span class="login100-form-title p-b-51">
+          The Vel'Koz Dashboard
+        </span>
+
+        {% csrf_token %}
+
+        {% for field in form %}
+
+            {% if field.html_name == 'username' %}
+              <div class="wrap-input100 validate-input m-b-16 input-group" data-validate = "Username is required">
+  						<input class="input100 form-control" type="text" id="{{ field.id_for_label }}" name="{{ field.html_name }}" placeholder="Username">
+  						<span class="focus-input100"></span>
+  					  </div>
+            {% endif  %}
+
+            {% if field.html_name == 'password' %}
+              <div class="wrap-input100 validate-input m-b-16 input-group" data-validate = "Password is required">
+  						<input class="input100 form-control" type="password" id="{{ field.id_for_label }}" name="{{ field.html_name }}" placeholder="Password">
+  						<span class="focus-input100"></span>
+              </div>
+            {% endif %}
+
+            {{ field.errors }}
+
+          {% endfor %}
+
+        <div class="container-login100-form-btn m-t-17">
+          <button class="login100-form-btn" type="submit">
+            Login
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+<div id="dropDownSelect1"></div>
+{% endblock body %}
+
+{% block js %}
+<!--===============================================================================================-->
+	<script src="{% static 'registration/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registration/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registration/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'registration/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registration/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registration/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'registration/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registration/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registration/js/main.js' %}"></script>
+{% endblock js %}

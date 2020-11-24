@@ -1,0 +1,10 @@
+/* Custom Layout for a Index Database Card */
+.card {
+  margin: 20px;
+  border-color: #000000;
+  border-width: thin;
+}
+
+.create_db_card_label {
+  text-align: center;
+}
