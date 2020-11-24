@@ -5,4 +5,19 @@
 
 <h1>PLACEHOLDER FOR STOCK DASHBOARD MAIN INDEX</h1>
 
+<table>
+<tbody>
+{% if stock_summary_table %}
+  {% for row in stock_summary_table  %}
+    <tr>
+	<td>{{row.ticker}}</td>	
+	<td>{{row.price_tbl}}</td>	
+	<td>{{row.holdings_tbl}}</td>	
+	<td>{{row.last_updated}}</td>	
+    </tr>
+  {% endfor %}
+{% endif %}
+</tbody>
+</table>
+
 {% endblock body %}
