@@ -58,4 +58,4 @@ stock_price_operator = stock_pipeline.stock_price_dag # PythonOperator Object
 stock_db_summary_DAG_operator = stock_pipeline.schedule_stock_summary_data_ingestion(
     stock_summary_ticker_lst) # DAG Object
 
-stock_summary_data_operator = stock_pipeline.stock_sumary_dag # PythonOperator Object 
+stock_summary_data_operator = stock_pipeline.stock_summary_dag # PythonOperator Object 
