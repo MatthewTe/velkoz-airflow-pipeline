@@ -1,7 +1,5 @@
 # Importing the velkoz data extraction library packages:
 from velkoz_web_packages.objects_stock_data.stock_data_compiler import compile_ticker_list
-from velkoz_web_packages.objects_stock_data.objects_stock_price.web_objects_stock_price import NASDAQStockPriceResponseObject
-from velkoz_web_packages.objects_stock_data.objects_stock_price.ingestion_engines_stock_price import StockPriceDataIngestionEngine
 
 # Importing the Velkoz Pipeline API:
 from velkoz_api.velkoz_airflow_pipeline.stock_data_pipeline import VelkozStockPipeline
@@ -45,7 +43,7 @@ Calling Velkoz Airflow Pipeline API to create DAGs and Operators based on data e
 
 "<---Stock Price Data--->"
 # Creating Stock Pipeline Object:
-stock_pipeline = VelkozStockPipeline(database_uri, "2020-11-22")
+stock_pipeline = VelkozStockPipeline(database_uri, "2020-11-23")
 
 
 # Exposing Stock Price DAG and PythonOperartor to Global Execution Context:
