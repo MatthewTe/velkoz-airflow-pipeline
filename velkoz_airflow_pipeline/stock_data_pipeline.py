@@ -35,6 +35,7 @@ price_csv_file_path = os.environ["TICKER_PRICE_CSV_PATH"]
 
 # Compiling csv into list of ticker strings via the stock data compiler:
 price_ticker_lst = compile_ticker_list(price_csv_file_path)
+stock_summary_ticker_lst = price_ticker_lst # TODO: Change to unique csv file in production.
 #print("Extracted Ticker List:", price_ticker_lst)
 
 
@@ -51,4 +52,11 @@ stock_pipeline = VelkozStockPipeline(database_uri, "2020-11-22")
 stock_price_DAG_operator = stock_pipeline.schedule_stock_price_data_ingestion(
     price_ticker_lst) # DAG Object
 
-stock_price_DAG = stock_pipeline.stock_price_dag # PythonOperator Object
+stock_price_operator = stock_pipeline.stock_price_dag # PythonOperator Object
+
+"<---Stock Database Summary Data--->"
+# Exposing Stock Summary Data DAG:
+stock_db_summary_DAG_operator = stock_pipeline.schedule_stock_summary_data_ingestion(
+    stock_summary_ticker_lst) # DAG Object
+
+stock_summary_data_operator = stock_pipeline.stock_sumary_dag # PythonOperator Object 
