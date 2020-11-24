@@ -23,7 +23,7 @@ ARG AIRFLOW_DAG_FOLDER=${AIRFLOW_USER_HOME}/dags
 ENV VELKOZ_DB_URI="postgresql://django:entropy_investments@docker.for.mac.host.internal:5432/stock_data_db"
 
 # Ticker CSV path environment variables, again to be manually configured:
-ENV TICKER_DATABASE_SUMMARY_CSV_PATH=""
+ENV TICKER_DATABASE_SUMMARY_CSV_PATH=${AIRFLOW_USER_HOME}/ticker_price_list.csv
 ENV TICKER_PRICE_CSV_PATH=${AIRFLOW_USER_HOME}/ticker_price_list.csv
 ENV TICKER_HOLDINGS_CSV_PATH=""
 

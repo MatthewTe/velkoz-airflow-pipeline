@@ -30,10 +30,11 @@ except:
 
 # Extracting Absoloute Path to .csv file for stock price tickers:
 price_csv_file_path = os.environ["TICKER_PRICE_CSV_PATH"] 
+stock_summary_csv_file_path = os.environ["TICKER_DATABASE_SUMMARY_CSV_PATH"]
 
 # Compiling csv into list of ticker strings via the stock data compiler:
 price_ticker_lst = compile_ticker_list(price_csv_file_path)
-stock_summary_ticker_lst = price_ticker_lst # TODO: Change to unique csv file in production.
+stock_summary_ticker_lst = compile_ticker_list(stock_summary_csv_file_path)
 #print("Extracted Ticker List:", price_ticker_lst)
 
 
