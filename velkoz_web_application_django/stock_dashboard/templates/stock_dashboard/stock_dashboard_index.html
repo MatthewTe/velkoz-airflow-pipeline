@@ -3,21 +3,34 @@
 
 {% block body %}
 
-<h1>PLACEHOLDER FOR STOCK DASHBOARD MAIN INDEX</h1>
+  {# Div containing form for searching stock info based on ticker symbol #}
+  <div class="col-md-6">
+    <form action="{% url 'stock_data_db' %}" method="GET">
+      <input type="text" name="search" placeholder="Ticker">
+    </form>
+  </div>
 
-<table>
-<tbody>
-{% if stock_summary_table %}
-  {% for row in stock_summary_table  %}
-    <tr>
-	<td>{{row.ticker}}</td>	
-	<td>{{row.price_tbl}}</td>	
-	<td>{{row.holdings_tbl}}</td>	
-	<td>{{row.last_updated}}</td>	
-    </tr>
-  {% endfor %}
-{% endif %}
-</tbody>
-</table>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Ticker</th>
+        <th scope="col">Price Table Status</th>
+        <th scope="col">Fund Holdings Table Status</th>
+        <th scope="col">Last Status Check</th>
+      <tr>
+    </thead>
+    <tbody>
+    {% if stock_summary_table %}
+      {% for row in stock_summary_table  %}
+        <tr>
+   	      <td><a href="{% url 'stock_dashboard_individual' ticker=row.ticker %}">{{row.ticker}}</a></td>	
+  	     <td>{{row.price_tbl}}</td>	
+  	     <td>{{row.holdings_tbl}}</td>	
+  	     <td>{{row.last_updated}}</td>	
+        </tr>
+      {% endfor %}
+    {% endif %}
+    </tbody>
+  </table>
 
 {% endblock body %}

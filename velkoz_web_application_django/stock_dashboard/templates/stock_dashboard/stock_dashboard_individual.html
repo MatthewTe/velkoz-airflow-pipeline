@@ -1,0 +1,38 @@
+{% extends "core_layout.html" %}
+{% load static %}
+
+{# Connecting the front-end javascript to the template: #}
+
+{% block head_links %}
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock head_links %}
+
+
+{% block js %}
+    
+	{# Declaring the Price History TimeSeries data in HTML document as JSON:  #}
+	{{price_history_index|json_script:'price_history_index'}}
+	{{price_history_close|json_script:'price_history_close'}}
+
+	{# Javascript used to generate dynamic js variables #}
+	<script type="text/javascript">
+		var ticker = "{{ticker}}";
+	</script>
+
+	<script src="{% static '/stock_dashboard/js/stock_dashboard_individual_frontend.js' %}"></script>
+
+{% endblock js %}
+
+{% block body %}
+
+<div class="container-fluid border border-dark">
+	
+	<h2>Financial Dashboard: {{ticker}} </h2>
+	<h2 ><a href="{% url 'stock_data_db' %}">All Stocks</a></h2>
+
+	{# Price History TimeSeries #}
+	<div class="chart" id="priceTimeSeries"></div>
+
+</div>
+
+{% endblock body %}
