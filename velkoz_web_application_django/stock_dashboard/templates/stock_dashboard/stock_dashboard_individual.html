@@ -11,8 +11,11 @@
 {% block js %}
     
 	{# Declaring the Price History TimeSeries data in HTML document as JSON:  #}
-	{{price_history_index|json_script:'price_history_index'}}
-	{{price_history_close|json_script:'price_history_close'}}
+	{{price_history_index|json_script:'priceHistoryIndex'}}
+	{{price_history_close|json_script:'priceHistoryClose'}}
+	{{price_pct_change|json_script:'pricePctChangeClose'}}
+	{{price_cumsum|json_script:'priceCumSumClose'}}
+	{{price_30d_std|json_script:"price30DayStd"}}
 
 	{# Javascript used to generate dynamic js variables #}
 	<script type="text/javascript">
@@ -30,8 +33,24 @@
 	<h2>Financial Dashboard: {{ticker}} </h2>
 	<h2 ><a href="{% url 'stock_data_db' %}">All Stocks</a></h2>
 
-	{# Price History TimeSeries #}
+	{# Price History TimeSeries Charts #}
 	<div class="chart" id="priceTimeSeries"></div>
+
+	{# Volatility Statistics Charts #}
+	<div class="container-fluid border border-dark">
+		<div class="row">
+			<div class="col">
+				<div class="chart" id="pricePctChangeHist"></div>
+			</div>
+			<div class="col">
+				<div class="chart" id="priceCummulativeReturnsTimeSeries"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid border border-dark">
+		<dir class="chart" id="price30DStdTimeSeries"></dir>
+	</div>
 
 </div>
 

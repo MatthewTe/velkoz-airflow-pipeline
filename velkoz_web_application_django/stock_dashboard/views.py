@@ -87,9 +87,17 @@ def stock_dashboard_individual(request, ticker):
     # Using the API to query the price timeseries of ticker param:
     ticker_price_df = stock_api.get_price_history(ticker)
 
+    # Performing basic statistics calculations on price data:
+    close_pct_change = ticker_price_df['close'].pct_change(periods=1).fillna(0)
+    close_30d_std = close_pct_change.rolling(window=30, 
+        min_periods=30).std().fillna(0)
+
     # Extracting the index and the closing price from the dataframe:
     context['price_history_index'] = [str(date) for date in ticker_price_df.index]
     context['price_history_close'] = list(ticker_price_df['close'])
+    context['price_pct_change'] = list(close_pct_change)
+    context['price_cumsum'] = list(close_pct_change.cumsum())
+    context['price_30d_std'] = list(close_30d_std)
 
     return render(request, 'stock_dashboard/stock_dashboard_individual.html',
         context=context)
